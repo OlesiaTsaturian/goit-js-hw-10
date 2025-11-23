@@ -93,10 +93,7 @@ const timer = {
 const onStartBtnClick = () => {
   timer.deadline = userSelectedDates;
   timer.start();
-  //  start(){
-  //     this.intervalId = setInterval(()=>{
-  //         const diff = this
-  //     })}
+  refs.startBtn.disabled = true;
 };
 
 refs.startBtn.addEventListener('click', onStartBtnClick);
