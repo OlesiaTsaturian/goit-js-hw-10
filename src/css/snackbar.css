@@ -1,1 +1,12 @@
 @import 'izitoast/dist/css/iziToast.min.css';
+form {
+  margin-top: 20px;
+}
+
+fieldset {
+  width: 400px;
+  margin: 20px auto;
+}
+button {
+  padding: 15px 25px;
+}
