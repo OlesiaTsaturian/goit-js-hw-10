@@ -8,8 +8,9 @@ const options = {
   time_24hr: true,
   defaultDate: new Date(),
   minuteIncrement: 1,
-  onClose(selectedDates) {
+  onClose(selectedDates, _, instance) {
     userSelectedDates = selectedDates[0];
+    instance.destroy();
     console.log(selectedDates[0]);
 
     if (Date.now() >= userSelectedDates) {
