@@ -10,7 +10,6 @@ const options = {
   minuteIncrement: 1,
   onClose(selectedDates, _, instance) {
     userSelectedDates = selectedDates[0];
-    instance.destroy();
     console.log(selectedDates[0]);
 
     if (Date.now() >= userSelectedDates) {
@@ -31,13 +30,14 @@ flatpickr('#datetime-picker', options);
 
 const refs = {
   startBtn: document.querySelector('button'),
-
+  dataInput: document.querySelector('#datetime-picker'),
   days: document.querySelector('[data-days]'),
   hours: document.querySelector('[data-hours]'),
   minutes: document.querySelector('[data-minutes]'),
   seconds: document.querySelector('[data-seconds]'),
 };
 
+refs.dataInput.disabled = false;
 refs.startBtn.disabled = true;
 
 const timer = {
@@ -50,6 +50,9 @@ const timer = {
 
       if (difference <= 0) {
         this.stop();
+
+        refs.dataInput.disabled = false;
+        refs.startBtn.disabled = true;
         return;
       }
 
@@ -95,6 +98,7 @@ const onStartBtnClick = () => {
   timer.deadline = userSelectedDates;
   timer.start();
   refs.startBtn.disabled = true;
+  refs.dataInput.disabled = true;
 };
 
 refs.startBtn.addEventListener('click', onStartBtnClick);
